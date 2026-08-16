@@ -1,0 +1,110 @@
+<script type="module">
+import { initializeApp } from "https://www.gstatic.com/firebasejs/12.1.0/firebase-app.js";
+import {
+    getAuth,
+    RecaptchaVerifier,
+    signInWithPhoneNumber
+} from "https://www.gstatic.com/firebasejs/12.1.0/firebase-auth.js";
+
+/* अपना Firebase config यहाँ डालना */
+const firebaseConfig = {
+    apiKey: "YOUR_API_KEY",
+    authDomain: "YOUR_PROJECT.firebaseapp.com",
+    projectId: "YOUR_PROJECT_ID",
+    storageBucket: "YOUR_PROJECT.firebasestorage.app",
+    messagingSenderId: "YOUR_SENDER_ID",
+    appId: "YOUR_APP_ID"
+};
+
+const app = initializeApp(firebaseConfig);
+const auth = getAuth(app);
+
+let confirmationResult = null;
+
+/* reCAPTCHA */
+window.recaptchaVerifier = new RecaptchaVerifier(
+    auth,
+    "recaptcha-container",
+    {
+        size: "normal"
+    }
+);
+
+/* SEND REAL OTP */
+window.sendRealOTP = async function () {
+
+    const phone =
+        document.getElementById("phone").value.trim();
+
+    if (!/^[0-9]{10}$/.test(phone)) {
+        alert("Please enter a valid 10 digit mobile number.");
+        return;
+    }
+
+    const phoneNumber = "+91" + phone;
+
+    try {
+
+        confirmationResult =
+            await signInWithPhoneNumber(
+                auth,
+                phoneNumber,
+                window.recaptchaVerifier
+            );
+
+        document.getElementById("detailsScreen")
+            .classList.add("hidden");
+
+        document.getElementById("otpScreen")
+            .classList.remove("hidden");
+
+        alert("📱 OTP SMS sent successfully!");
+
+    } catch (error) {
+
+        console.error(error);
+
+        alert(
+            "OTP send nahi hua: " +
+            error.message
+        );
+
+    }
+};
+
+
+/* VERIFY REAL OTP */
+window.verifyRealOTP = async function () {
+
+    const code =
+        document.getElementById("otpInput")
+        .value.trim();
+
+    if (!/^[0-9]{6}$/.test(code)) {
+        alert("Please enter the 6 digit OTP.");
+        return;
+    }
+
+    try {
+
+        await confirmationResult.confirm(code);
+
+        alert("✅ Mobile verified!");
+
+        document.getElementById("otpScreen")
+            .classList.add("hidden");
+
+        document.getElementById("quizScreen")
+            .classList.remove("hidden");
+
+        startQuiz();
+
+    } catch (error) {
+
+        console.error(error);
+
+        alert("❌ Wrong or expired OTP.");
+
+    }
+};
+</script>
