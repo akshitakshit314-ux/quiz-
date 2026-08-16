@@ -1,0 +1,3 @@
+<div class="question-image">
+    <img id="questionImage" src="" alt="Question image">
+</div>

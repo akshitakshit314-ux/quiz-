@@ -1,0 +1,10 @@
+.question-image img {
+    width: 100%;
+    max-width: 400px;
+    max-height: 250px;
+    object-fit: contain;
+    border-radius: 18px;
+    margin: 15px auto;
+    display: block;
+    box-shadow: 0 8px 25px rgba(0,0,0,.15);
+}
