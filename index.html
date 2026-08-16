@@ -5,851 +5,462 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>AKS Quiz 🎯 | Online Quiz</title>
-
-<meta name="description" content="AKS Quiz - Play fun online quizzes, verify your mobile number, and check your score instantly.">
+<title>AKS Quiz | Online Quiz</title>
 
 <style>
 * {
-    box-sizing: border-box;
-    margin: 0;
-    padding: 0;
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
 }
 
 body {
-    font-family: Arial, sans-serif;
-    min-height: 100vh;
-    background: linear-gradient(135deg, #667eea, #764ba2, #ec4899);
-    color: #222;
-    overflow-x: hidden;
+  font-family: Arial, sans-serif;
+  background: linear-gradient(135deg, #4f46e5, #7c3aed);
+  min-height: 100vh;
+  color: #222;
 }
-
-/* Background decoration */
-
-.bg span {
-    position: fixed;
-    border-radius: 50%;
-    background: rgba(255,255,255,.15);
-    animation: float 10s infinite ease-in-out;
-    z-index: -1;
-}
-
-.bg span:nth-child(1) {
-    width: 120px;
-    height: 120px;
-    top: 8%;
-    left: 5%;
-}
-
-.bg span:nth-child(2) {
-    width: 80px;
-    height: 80px;
-    right: 8%;
-    top: 20%;
-    animation-delay: 2s;
-}
-
-.bg span:nth-child(3) {
-    width: 160px;
-    height: 160px;
-    left: 10%;
-    bottom: 5%;
-    animation-delay: 4s;
-}
-
-.bg span:nth-child(4) {
-    width: 100px;
-    height: 100px;
-    right: 15%;
-    bottom: 8%;
-    animation-delay: 6s;
-}
-
-@keyframes float {
-    0%,100% {
-        transform: translateY(0) rotate(0deg);
-    }
-
-    50% {
-        transform: translateY(-45px) rotate(180deg);
-    }
-}
-
-/* Container */
 
 .container {
-    width: 92%;
-    max-width: 760px;
-    margin: 35px auto;
+  width: 92%;
+  max-width: 700px;
+  margin: 40px auto;
 }
-
-/* Card */
 
 .card {
-    background: rgba(255,255,255,.96);
-    border-radius: 28px;
-    padding: 35px;
-    box-shadow: 0 20px 50px rgba(0,0,0,.25);
-    animation: appear .6s ease;
+  background: white;
+  border-radius: 20px;
+  padding: 30px;
+  box-shadow: 0 15px 40px rgba(0,0,0,.2);
 }
-
-@keyframes appear {
-    from {
-        opacity: 0;
-        transform: translateY(25px);
-    }
-
-    to {
-        opacity: 1;
-        transform: translateY(0);
-    }
-}
-
-.hidden {
-    display: none !important;
-}
-
-/* Logo */
 
 .logo {
-    text-align: center;
-    font-size: 42px;
-    font-weight: 900;
-    background: linear-gradient(90deg,#4f46e5,#ec4899);
-    -webkit-background-clip: text;
-    color: transparent;
+  text-align: center;
+  font-size: 32px;
+  font-weight: bold;
+  color: #4f46e5;
+  margin-bottom: 10px;
 }
 
 .subtitle {
-    text-align: center;
-    color: #777;
-    margin: 10px 0 28px;
+  text-align: center;
+  color: #777;
+  margin-bottom: 25px;
 }
 
-/* Inputs */
+h2 {
+  margin-bottom: 20px;
+  color: #333;
+}
 
 label {
-    display: block;
-    margin: 15px 0 7px;
-    font-weight: bold;
+  display: block;
+  margin: 12px 0 6px;
+  font-weight: bold;
 }
 
 input,
 select {
-    width: 100%;
-    padding: 14px;
-    border: 2px solid #ddd;
-    border-radius: 12px;
-    font-size: 16px;
+  width: 100%;
+  padding: 13px;
+  border: 2px solid #ddd;
+  border-radius: 10px;
+  font-size: 16px;
 }
 
 input:focus,
 select:focus {
-    outline: none;
-    border-color: #6366f1;
+  outline: none;
+  border-color: #4f46e5;
 }
 
-/* Buttons */
-
 .btn {
-    width: 100%;
-    border: none;
-    padding: 15px;
-    margin-top: 20px;
-    border-radius: 14px;
-    background: linear-gradient(90deg,#4f46e5,#7c3aed);
-    color: white;
-    font-size: 17px;
-    font-weight: bold;
-    cursor: pointer;
-    transition: .25s;
+  width: 100%;
+  border: none;
+  padding: 14px;
+  margin-top: 20px;
+  border-radius: 10px;
+  background: #4f46e5;
+  color: white;
+  font-size: 17px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: .2s;
 }
 
 .btn:hover {
-    transform: translateY(-3px);
-    box-shadow: 0 10px 25px rgba(79,70,229,.35);
+  background: #3730a3;
+  transform: translateY(-2px);
 }
 
 .secondary {
-    background: #e5e7eb;
-    color: #333;
-    box-shadow: none;
+  background: #eee;
+  color: #333;
 }
 
-/* OTP */
-
-.otp-info {
-    background: #eef2ff;
-    padding: 15px;
-    border-radius: 15px;
-    margin-top: 15px;
-    text-align: center;
+.secondary:hover {
+  background: #ddd;
 }
 
-#recaptcha-container {
-    margin-top: 20px;
+.hidden {
+  display: none !important;
 }
 
-/* Quiz */
+.otp-box {
+  text-align: center;
+  margin-top: 20px;
+  padding: 15px;
+  background: #f1f5ff;
+  border-radius: 10px;
+}
 
-.quiz-top {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    margin-bottom: 20px;
+.demo-otp {
+  font-size: 25px;
+  font-weight: bold;
+  color: #4f46e5;
+  letter-spacing: 6px;
+  margin-top: 5px;
 }
 
 .timer {
-    background: #fee2e2;
-    color: #dc2626;
-    padding: 9px 15px;
-    border-radius: 20px;
-    font-weight: bold;
+  text-align: right;
+  font-weight: bold;
+  color: #dc2626;
+  margin-bottom: 15px;
 }
 
 .progress {
-    height: 12px;
-    background: #e5e7eb;
-    border-radius: 20px;
-    overflow: hidden;
-    margin-bottom: 25px;
+  height: 10px;
+  background: #ddd;
+  border-radius: 20px;
+  overflow: hidden;
+  margin-bottom: 25px;
 }
 
 .progress-bar {
-    height: 100%;
-    width: 0%;
-    background: linear-gradient(90deg,#4f46e5,#ec4899);
-    transition: width .4s;
-}
-
-.question-number {
-    color: #6366f1;
-    font-weight: bold;
-    margin-bottom: 10px;
+  height: 100%;
+  background: #4f46e5;
+  width: 0%;
+  transition: .3s;
 }
 
 .question {
-    font-size: 24px;
-    font-weight: bold;
-    line-height: 1.4;
-    margin-bottom: 20px;
+  font-size: 21px;
+  font-weight: bold;
+  margin-bottom: 20px;
 }
 
 .option {
-    width: 100%;
-    padding: 16px;
-    margin: 9px 0;
-    border: 2px solid #e5e7eb;
-    background: white;
-    border-radius: 14px;
-    text-align: left;
-    cursor: pointer;
-    font-size: 16px;
-    transition: .2s;
+  display: block;
+  width: 100%;
+  padding: 14px;
+  margin: 10px 0;
+  border: 2px solid #ddd;
+  background: white;
+  border-radius: 10px;
+  text-align: left;
+  cursor: pointer;
+  font-size: 16px;
+  transition: .2s;
 }
 
 .option:hover {
-    border-color: #6366f1;
-    background: #f5f3ff;
+  border-color: #4f46e5;
+  background: #f5f3ff;
 }
 
 .option.selected {
-    border-color: #6366f1;
-    background: #e0e7ff;
+  background: #e0e7ff;
+  border-color: #4f46e5;
 }
-
-/* Result */
 
 .result {
-    text-align: center;
-}
-
-.trophy {
-    font-size: 75px;
-    animation: trophy 1s infinite alternate;
-}
-
-@keyframes trophy {
-    from {
-        transform: scale(1) rotate(-5deg);
-    }
-
-    to {
-        transform: scale(1.1) rotate(5deg);
-    }
+  text-align: center;
 }
 
 .score {
-    font-size: 65px;
-    font-weight: 900;
-    margin: 15px;
-    background: linear-gradient(90deg,#4f46e5,#ec4899);
-    -webkit-background-clip: text;
-    color: transparent;
+  font-size: 60px;
+  font-weight: bold;
+  color: #4f46e5;
+  margin: 20px 0;
 }
 
 .result-box {
-    margin-top: 20px;
-    padding: 20px;
-    background: #f8fafc;
-    border-radius: 18px;
+  background: #f5f5ff;
+  border-radius: 15px;
+  padding: 20px;
+  margin-top: 20px;
 }
 
 .info {
-    padding: 9px;
-    border-bottom: 1px solid #eee;
+  margin: 8px 0;
 }
 
 .badge {
-    display: inline-block;
-    margin-top: 15px;
-    padding: 10px 20px;
-    border-radius: 25px;
-    background: linear-gradient(90deg,#4f46e5,#ec4899);
-    color: white;
-    font-weight: bold;
+  display: inline-block;
+  padding: 8px 15px;
+  border-radius: 20px;
+  background: #4f46e5;
+  color: white;
+  margin-top: 10px;
 }
 
 footer {
-    text-align: center;
-    color: white;
-    padding: 20px;
-}
-
-@media(max-width:600px) {
-    .container {
-        margin: 20px auto;
-    }
-
-    .card {
-        padding: 23px;
-    }
-
-    .logo {
-        font-size: 34px;
-    }
-
-    .question {
-        font-size: 20px;
-    }
+  text-align: center;
+  color: white;
+  margin: 20px;
 }
 </style>
 </head>
 
 <body>
 
-<div class="bg">
-    <span></span>
-    <span></span>
-    <span></span>
-    <span></span>
-</div>
-
 <div class="container">
 
-<!-- DETAILS -->
-
-<div class="card" id="detailsScreen">
+  <!-- DETAILS -->
+  <div class="card" id="detailsScreen">
 
     <div class="logo">🎯 AKS QUIZ</div>
 
     <p class="subtitle">
-        🧠 Learn • Think • Answer • Win 🏆
+      Test your knowledge and get your score!
     </p>
 
-    <h2>👤 Student Details</h2>
+    <h2>Student Details</h2>
 
     <label>Student Name</label>
-    <input id="studentName" type="text" placeholder="Enter your name">
+    <input type="text" id="studentName" placeholder="Enter your name">
 
     <label>Class</label>
     <select id="studentClass">
-        <option value="">Select Class</option>
-        <option>6</option>
-        <option>7</option>
-        <option>8</option>
-        <option>9</option>
-        <option>10</option>
-        <option>11</option>
-        <option>12</option>
+      <option value="">Select Class</option>
+      <option>6</option>
+      <option>7</option>
+      <option>8</option>
+      <option>9</option>
+      <option>10</option>
+      <option>11</option>
+      <option>12</option>
     </select>
 
     <label>Subject</label>
     <select id="subject">
-        <option value="">Select Subject</option>
-        <option>Science</option>
-        <option>Mathematics</option>
-        <option>Biology</option>
-        <option>General Knowledge</option>
-        <option>Computer</option>
+      <option value="">Select Subject</option>
+      <option>Science</option>
+      <option>Mathematics</option>
+      <option>Biology</option>
+      <option>General Knowledge</option>
+      <option>Computer</option>
     </select>
 
-    <label>📱 Mobile Number</label>
+    <label>Mobile Number</label>
     <input
-        id="phone"
-        type="tel"
-        maxlength="10"
-        placeholder="10 digit mobile number">
-
-    <div id="recaptcha-container"></div>
+      type="tel"
+      id="phone"
+      maxlength="10"
+      placeholder="10 digit mobile number">
 
     <button class="btn" onclick="sendOTP()">
-        🔐 Send Real OTP
+      📱 Send OTP
     </button>
 
-</div>
+  </div>
 
 
-<!-- OTP -->
+  <!-- OTP -->
+  <div class="card hidden" id="otpScreen">
 
-<div class="card hidden" id="otpScreen">
-
-    <div class="logo">🔐 VERIFY</div>
+    <div class="logo">🔐 Verification</div>
 
     <p class="subtitle">
-        Enter the OTP sent to your mobile number.
+      Enter the OTP to continue.
     </p>
 
-    <label>6 Digit OTP</label>
+    <label>Enter OTP</label>
 
     <input
-        id="otpInput"
-        type="text"
-        maxlength="6"
-        placeholder="Enter OTP">
+      type="text"
+      id="otpInput"
+      maxlength="6"
+      placeholder="Enter 6 digit OTP">
 
-    <div class="otp-info">
-        📱 OTP will be sent by Firebase SMS.
+    <div class="otp-box">
+      <div>Demo OTP:</div>
+      <div class="demo-otp" id="demoOTP">------</div>
     </div>
 
     <button class="btn" onclick="verifyOTP()">
-        ✅ Verify & Start Quiz
+      ✅ Verify OTP
     </button>
 
-    <button
-        class="btn secondary"
-        onclick="backToDetails()">
-        ← Back
+    <button class="btn secondary" onclick="backToDetails()">
+      ← Back
     </button>
 
-</div>
+  </div>
 
 
-<!-- QUIZ -->
+  <!-- QUIZ -->
+  <div class="card hidden" id="quizScreen">
 
-<div class="card hidden" id="quizScreen">
+    <div class="logo">🧠 AKS QUIZ</div>
 
-    <div class="quiz-top">
-        <strong>🧠 AKS QUIZ</strong>
-
-        <div class="timer">
-            ⏱️ <span id="time">60</span>s
-        </div>
+    <div class="timer">
+      ⏱️ Time: <span id="time">60</span>s
     </div>
 
     <div class="progress">
-        <div class="progress-bar" id="progressBar"></div>
+      <div class="progress-bar" id="progressBar"></div>
     </div>
 
-    <div class="question-number" id="questionNumber"></div>
+    <p id="questionNumber"></p>
 
-    <div class="question" id="question"></div>
+    <div class="question" id="question">
+      Question
+    </div>
 
     <div id="options"></div>
 
     <button class="btn" onclick="nextQuestion()">
-        Next Question →
+      Next →
     </button>
 
-</div>
+  </div>
 
 
-<!-- RESULT -->
-
-<div class="card hidden" id="resultScreen">
+  <!-- RESULT -->
+  <div class="card hidden" id="resultScreen">
 
     <div class="result">
 
-        <div class="trophy">🏆</div>
+      <div class="logo">🏆 QUIZ RESULT</div>
 
-        <div class="logo">QUIZ COMPLETE!</div>
+      <p>Congratulations!</p>
 
-        <p>Great job! Here is your result.</p>
+      <div class="score" id="finalScore">
+        0/5
+      </div>
 
-        <div class="score" id="finalScore">0/5</div>
+      <div class="result-box">
 
-        <div class="result-box">
-
-            <div class="info">
-                👤 Name:
-                <strong id="resultName"></strong>
-            </div>
-
-            <div class="info">
-                🎓 Class:
-                <strong id="resultClass"></strong>
-            </div>
-
-            <div class="info">
-                📚 Subject:
-                <strong id="resultSubject"></strong>
-            </div>
-
-            <div class="info">
-                ✅ Correct:
-                <strong id="correctAnswers"></strong>
-            </div>
-
-            <div class="info">
-                ❌ Wrong:
-                <strong id="wrongAnswers"></strong>
-            </div>
-
-            <div class="info">
-                📊 Percentage:
-                <strong id="percentage"></strong>
-            </div>
-
-            <div class="badge" id="resultMessage"></div>
-
+        <div class="info">
+          👤 Name:
+          <strong id="resultName"></strong>
         </div>
 
-        <button class="btn" onclick="restartQuiz()">
-            🔄 Try Again
-        </button>
+        <div class="info">
+          🎓 Class:
+          <strong id="resultClass"></strong>
+        </div>
+
+        <div class="info">
+          📚 Subject:
+          <strong id="resultSubject"></strong>
+        </div>
+
+        <div class="info">
+          ✅ Correct:
+          <strong id="correctAnswers"></strong>
+        </div>
+
+        <div class="info">
+          ❌ Wrong:
+          <strong id="wrongAnswers"></strong>
+        </div>
+
+        <div class="info">
+          📊 Percentage:
+          <strong id="percentage"></strong>
+        </div>
+
+        <div class="badge" id="resultMessage"></div>
+
+      </div>
+
+      <button class="btn" onclick="restartQuiz()">
+        🔄 Try Again
+      </button>
 
     </div>
 
-</div>
+  </div>
 
 </div>
 
 <footer>
-    🌟 AKS Quiz © 2026 • Keep Learning! 🚀
+  © 2026 AKS Quiz • Learn • Test • Improve 🚀
 </footer>
 
 
-<!-- FIREBASE -->
-
-<script type="module">
-
-import { initializeApp }
-from "https://www.gstatic.com/firebasejs/12.1.0/firebase-app.js";
-
-import {
-    getAuth,
-    RecaptchaVerifier,
-    signInWithPhoneNumber
-}
-from "https://www.gstatic.com/firebasejs/12.1.0/firebase-auth.js";
-
-
-/* YOUR FIREBASE CONFIG */
-
-const firebaseConfig = {
-
-    apiKey:
-    "AIzaSyBS9RsPs30_Sgyt4WXtJmnvceNTZvKYNtw",
-
-    authDomain:
-    "aks-quiz.firebaseapp.com",
-
-    projectId:
-    "aks-quiz",
-
-    storageBucket:
-    "aks-quiz.firebasestorage.app",
-
-    messagingSenderId:
-    "464660519093",
-
-    appId:
-    "1:464660519093:web:084b2089ea3f77768846fc"
-
-};
-
-
-const app = initializeApp(firebaseConfig);
-
-const auth = getAuth(app);
-
-let confirmationResult = null;
-let recaptchaVerifier = null;
-
-
-/* CREATE RECAPTCHA */
-
-function setupRecaptcha() {
-
-    if (recaptchaVerifier) {
-        return;
-    }
-
-    recaptchaVerifier =
-        new RecaptchaVerifier(
-            auth,
-            "recaptcha-container",
-            {
-                size: "normal"
-            }
-        );
-}
-
-setupRecaptcha();
-
-
-/* SEND REAL SMS OTP */
-
-window.sendOTP = async function() {
-
-    const name =
-        document.getElementById("studentName")
-        .value.trim();
-
-    const studentClass =
-        document.getElementById("studentClass")
-        .value;
-
-    const subject =
-        document.getElementById("subject")
-        .value;
-
-    const phone =
-        document.getElementById("phone")
-        .value.trim();
-
-
-    if (!name) {
-        alert("Please enter your name.");
-        return;
-    }
-
-    if (!studentClass) {
-        alert("Please select your class.");
-        return;
-    }
-
-    if (!subject) {
-        alert("Please select a subject.");
-        return;
-    }
-
-    if (!/^[0-9]{10}$/.test(phone)) {
-        alert("Please enter a valid 10 digit mobile number.");
-        return;
-    }
-
-
-    const phoneNumber = "+91" + phone;
-
-
-    try {
-
-        if (!recaptchaVerifier) {
-            setupRecaptcha();
-        }
-
-        confirmationResult =
-            await signInWithPhoneNumber(
-                auth,
-                phoneNumber,
-                recaptchaVerifier
-            );
-
-
-        document
-            .getElementById("detailsScreen")
-            .classList.add("hidden");
-
-
-        document
-            .getElementById("otpScreen")
-            .classList.remove("hidden");
-
-
-        alert("📱 OTP sent to your mobile number!");
-
-    }
-
-    catch(error) {
-
-        console.error(error);
-
-        alert(
-            "OTP send failed.\n\n" +
-            error.message
-        );
-
-        if (recaptchaVerifier) {
-
-            recaptchaVerifier.clear();
-
-            recaptchaVerifier = null;
-
-            setupRecaptcha();
-
-        }
-
-    }
-
-};
-
-
-/* VERIFY OTP */
-
-window.verifyOTP = async function() {
-
-    const code =
-        document
-        .getElementById("otpInput")
-        .value.trim();
-
-
-    if (!/^[0-9]{6}$/.test(code)) {
-
-        alert("Please enter the 6 digit OTP.");
-
-        return;
-
-    }
-
-
-    if (!confirmationResult) {
-
-        alert("Please request OTP first.");
-
-        return;
-
-    }
-
-
-    try {
-
-        await confirmationResult.confirm(code);
-
-
-        alert("✅ Mobile number verified!");
-
-
-        document
-            .getElementById("otpScreen")
-            .classList.add("hidden");
-
-
-        document
-            .getElementById("quizScreen")
-            .classList.remove("hidden");
-
-
-        startQuiz();
-
-    }
-
-    catch(error) {
-
-        console.error(error);
-
-        alert(
-            "❌ Wrong or expired OTP.\n\n" +
-            error.message
-        );
-
-    }
-
-};
-
-
-/* BACK */
-
-window.backToDetails = function() {
-
-    document
-        .getElementById("otpScreen")
-        .classList.add("hidden");
-
-    document
-        .getElementById("detailsScreen")
-        .classList.remove("hidden");
-
-};
-
-
-/* ================= QUIZ ================= */
+<script>
+
+/* =========================
+   QUIZ QUESTIONS
+========================= */
 
 const questions = [
 
-    {
-        question:
-        "Which planet is known as the Red Planet?",
+  {
+    question: "Which planet is known as the Red Planet?",
+    options: [
+      "Earth",
+      "Mars",
+      "Jupiter",
+      "Venus"
+    ],
+    answer: 1
+  },
 
-        options: [
-            "Earth",
-            "Mars",
-            "Jupiter",
-            "Venus"
-        ],
+  {
+    question: "What is 12 × 5?",
+    options: [
+      "50",
+      "60",
+      "70",
+      "80"
+    ],
+    answer: 1
+  },
 
-        answer: 1
-    },
+  {
+    question: "Which gas do plants mainly use for photosynthesis?",
+    options: [
+      "Oxygen",
+      "Nitrogen",
+      "Carbon dioxide",
+      "Hydrogen"
+    ],
+    answer: 2
+  },
 
-    {
-        question:
-        "What is 12 × 5?",
+  {
+    question: "How many chromosomes are present in a normal human somatic cell?",
+    options: [
+      "23",
+      "44",
+      "46",
+      "48"
+    ],
+    answer: 2
+  },
 
-        options: [
-            "50",
-            "60",
-            "70",
-            "80"
-        ],
-
-        answer: 1
-    },
-
-    {
-        question:
-        "Which gas do plants use for photosynthesis?",
-
-        options: [
-            "Oxygen",
-            "Nitrogen",
-            "Carbon dioxide",
-            "Hydrogen"
-        ],
-
-        answer: 2
-    },
-
-    {
-        question:
-        "How many chromosomes are present in a normal human somatic cell?",
-
-        options: [
-            "23",
-            "44",
-            "46",
-            "48"
-        ],
-
-        answer: 2
-    },
-
-    {
-        question:
-        "Which is the largest ocean on Earth?",
-
-        options: [
-            "Atlantic Ocean",
-            "Indian Ocean",
-            "Pacific Ocean",
-            "Arctic Ocean"
-        ],
-
-        answer: 2
-    }
+  {
+    question: "Which is the largest ocean on Earth?",
+    options: [
+      "Atlantic Ocean",
+      "Indian Ocean",
+      "Pacific Ocean",
+      "Arctic Ocean"
+    ],
+    answer: 2
+  }
 
 ];
 
+
+/* =========================
+   VARIABLES
+========================= */
 
 let currentQuestion = 0;
 let score = 0;
@@ -857,262 +468,355 @@ let selectedAnswer = null;
 let timeLeft = 60;
 let timer;
 
+let generatedOTP = "";
 
-/* START */
+
+/* =========================
+   SEND OTP
+========================= */
+
+function sendOTP() {
+
+  const name =
+    document.getElementById("studentName").value.trim();
+
+  const studentClass =
+    document.getElementById("studentClass").value;
+
+  const subject =
+    document.getElementById("subject").value;
+
+  const phone =
+    document.getElementById("phone").value.trim();
+
+
+  if (!name) {
+    alert("Please enter your name.");
+    return;
+  }
+
+  if (!studentClass) {
+    alert("Please select your class.");
+    return;
+  }
+
+  if (!subject) {
+    alert("Please select a subject.");
+    return;
+  }
+
+  if (!/^[0-9]{10}$/.test(phone)) {
+    alert("Please enter a valid 10 digit mobile number.");
+    return;
+  }
+
+
+  generatedOTP =
+    Math.floor(100000 + Math.random() * 900000)
+    .toString();
+
+
+  document.getElementById("demoOTP").textContent =
+    generatedOTP;
+
+
+  document.getElementById("detailsScreen")
+    .classList.add("hidden");
+
+  document.getElementById("otpScreen")
+    .classList.remove("hidden");
+
+}
+
+
+/* =========================
+   VERIFY OTP
+========================= */
+
+function verifyOTP() {
+
+  const enteredOTP =
+    document.getElementById("otpInput").value.trim();
+
+
+  if (enteredOTP === generatedOTP) {
+
+    alert("✅ OTP verified successfully!");
+
+    document.getElementById("otpScreen")
+      .classList.add("hidden");
+
+    document.getElementById("quizScreen")
+      .classList.remove("hidden");
+
+    startQuiz();
+
+  } else {
+
+    alert("❌ Incorrect OTP. Please try again.");
+
+  }
+
+}
+
+
+/* =========================
+   START QUIZ
+========================= */
 
 function startQuiz() {
 
-    currentQuestion = 0;
+  currentQuestion = 0;
+  score = 0;
+  timeLeft = 60;
 
-    score = 0;
+  loadQuestion();
 
-    timeLeft = 60;
+  clearInterval(timer);
 
-    clearInterval(timer);
+  timer = setInterval(() => {
+
+    timeLeft--;
 
     document.getElementById("time")
-        .textContent = timeLeft;
+      .textContent = timeLeft;
 
-    loadQuestion();
+    if (timeLeft <= 0) {
 
+      clearInterval(timer);
 
-    timer = setInterval(() => {
+      finishQuiz();
 
-        timeLeft--;
+    }
 
-        document.getElementById("time")
-            .textContent = timeLeft;
-
-
-        if (timeLeft <= 0) {
-
-            clearInterval(timer);
-
-            finishQuiz();
-
-        }
-
-    },1000);
+  }, 1000);
 
 }
 
 
-/* LOAD QUESTION */
+/* =========================
+   LOAD QUESTION
+========================= */
 
 function loadQuestion() {
 
-    selectedAnswer = null;
+  selectedAnswer = null;
 
-    const q = questions[currentQuestion];
+  const q = questions[currentQuestion];
 
+  document.getElementById("questionNumber")
+    .textContent =
+    `Question ${currentQuestion + 1} of ${questions.length}`;
 
-    document.getElementById("questionNumber")
-        .textContent =
-        `Question ${currentQuestion + 1} of ${questions.length}`;
-
-
-    document.getElementById("question")
-        .textContent = q.question;
+  document.getElementById("question")
+    .textContent = q.question;
 
 
-    const options =
-        document.getElementById("options");
+  const optionsContainer =
+    document.getElementById("options");
 
-    options.innerHTML = "";
-
-
-    q.options.forEach((option,index) => {
-
-        const button =
-            document.createElement("button");
-
-        button.className = "option";
-
-        button.textContent =
-            `${String.fromCharCode(65 + index)}. ${option}`;
+  optionsContainer.innerHTML = "";
 
 
-        button.onclick =
-            () => selectAnswer(index,button);
+  q.options.forEach((option, index) => {
+
+    const button =
+      document.createElement("button");
+
+    button.className = "option";
+
+    button.textContent =
+      `${String.fromCharCode(65 + index)}. ${option}`;
+
+    button.onclick = () =>
+      selectAnswer(index, button);
+
+    optionsContainer.appendChild(button);
+
+  });
 
 
-        options.appendChild(button);
+  const progress =
+    ((currentQuestion) / questions.length) * 100;
 
-    });
-
-
-    document.getElementById("progressBar")
-        .style.width =
-        ((currentQuestion / questions.length) * 100)
-        + "%";
+  document.getElementById("progressBar")
+    .style.width = progress + "%";
 
 }
 
 
-/* SELECT */
+/* =========================
+   SELECT ANSWER
+========================= */
 
-function selectAnswer(index,button) {
+function selectAnswer(index, button) {
 
-    selectedAnswer = index;
+  selectedAnswer = index;
 
-    document.querySelectorAll(".option")
-        .forEach(btn =>
-            btn.classList.remove("selected")
-        );
+  document.querySelectorAll(".option")
+    .forEach(btn => {
+      btn.classList.remove("selected");
+    });
 
-    button.classList.add("selected");
+  button.classList.add("selected");
 
-}kar
-
-
-/* NEXT */
-
-window.nextQuestion = function() {
-
-    if (selectedAnswer === null) {
-
-        alert("⚠️ Please select an answer.");
-
-        return;
-
-    }
+}
 
 
-    if (
-        selectedAnswer ===
-        questions[currentQuestion].answer
-    ) {
+/* =========================
+   NEXT QUESTION
+========================= */
 
-        score++;
+function nextQuestion() {
 
-    }
+  if (selectedAnswer === null) {
 
+    alert("Please select an answer.");
 
-    currentQuestion++;
+    return;
 
-
-    if (currentQuestion >= questions.length) {
-
-        finishQuiz();
-
-    }
-
-    else {
-
-        loadQuestion();
-
-    }
-
-};
+  }
 
 
-/* FINISH */
+  if (
+    selectedAnswer ===
+    questions[currentQuestion].answer
+  ) {
+
+    score++;
+
+  }
+
+
+  currentQuestion++;
+
+
+  if (currentQuestion >= questions.length) {
+
+    finishQuiz();
+
+  } else {
+
+    loadQuestion();
+
+  }
+
+}
+
+
+/* =========================
+   FINISH QUIZ
+========================= */
 
 function finishQuiz() {
 
-    clearInterval(timer);
+  clearInterval(timer);
 
-    document.getElementById("quizScreen")
-        .classList.add("hidden");
+  document.getElementById("quizScreen")
+    .classList.add("hidden");
 
-    document.getElementById("resultScreen")
-        .classList.remove("hidden");
-
-
-    const total = questions.length;
-
-    const wrong = total - score;
-
-    const percentage =
-        Math.round((score / total) * 100);
+  document.getElementById("resultScreen")
+    .classList.remove("hidden");
 
 
-    document.getElementById("finalScore")
-        .textContent =
-        `${score}/${total}`;
+  const total = questions.length;
+
+  const wrong = total - score;
+
+  const percentage =
+    Math.round((score / total) * 100);
 
 
-    document.getElementById("resultName")
-        .textContent =
-        document.getElementById("studentName").value;
+  document.getElementById("finalScore")
+    .textContent =
+    `${score}/${total}`;
 
 
-    document.getElementById("resultClass")
-        .textContent =
-        document.getElementById("studentClass").value;
+  document.getElementById("resultName")
+    .textContent =
+    document.getElementById("studentName").value;
 
 
-    document.getElementById("resultSubject")
-        .textContent =
-        document.getElementById("subject").value;
+  document.getElementById("resultClass")
+    .textContent =
+    document.getElementById("studentClass").value;
 
 
-    document.getElementById("correctAnswers")
-        .textContent = score;
+  document.getElementById("resultSubject")
+    .textContent =
+    document.getElementById("subject").value;
 
 
-    document.getElementById("wrongAnswers")
-        .textContent = wrong;
+  document.getElementById("correctAnswers")
+    .textContent = score;
 
 
-    document.getElementById("percentage")
-        .textContent =
-        percentage + "%";
+  document.getElementById("wrongAnswers")
+    .textContent = wrong;
 
 
-    let message;
+  document.getElementById("percentage")
+    .textContent = percentage + "%";
 
 
-    if (percentage >= 80) {
+  let message = "";
 
-        message = "🌟 Excellent!";
+  if (percentage >= 80) {
 
-    }
+    message = "🌟 Excellent!";
 
-    else if (percentage >= 60) {
+  } else if (percentage >= 60) {
 
-        message = "👏 Great Job!";
+    message = "👏 Great Job!";
 
-    }
+  } else if (percentage >= 40) {
 
-    else if (percentage >= 40) {
+    message = "👍 Keep Practising!";
 
-        message = "👍 Keep Practising!";
+  } else {
 
-    }
+    message = "💪 Try Again!";
 
-    else {
-
-        message = "💪 Try Again!";
-
-    }
+  }
 
 
-    document.getElementById("resultMessage")
-        .textContent = message;
+  document.getElementById("resultMessage")
+    .textContent = message;
 
 }
 
 
-/* RESTART */
+/* =========================
+   BACK
+========================= */
 
-window.restartQuiz = function() {
+function backToDetails() {
 
-    clearInterval(timer);
+  document.getElementById("otpScreen")
+    .classList.add("hidden");
 
-    document.getElementById("resultScreen")
-        .classList.add("hidden");
+  document.getElementById("detailsScreen")
+    .classList.remove("hidden");
 
-    document.getElementById("detailsScreen")
-        .classList.remove("hidden");
+}
 
-    document.getElementById("otpInput")
-        .value = "";
 
-    document.getElementById("phone")
-        .value = "";
+/* =========================
+   RESTART
+========================= */
 
-};
+function restartQuiz() {
+
+  document.getElementById("resultScreen")
+    .classList.add("hidden");
+
+  document.getElementById("detailsScreen")
+    .classList.remove("hidden");
+
+  document.getElementById("otpInput")
+    .value = "";
+
+}
 
 </script>
 
